@@ -44,8 +44,6 @@ def subs(a,b):
     result = f"{a} - {b} = {subtraction}"
     operation_history.append(result)
     print(result)
-
-
 def save_file(a):
     file_path = "C:/Users/Oliwia/Desktop/operationHistory.txt"
     with open(file_path, "w") as file:
@@ -59,6 +57,7 @@ def operation_system():
         show_menu()
 
         user_operation = input("Jaką operacje chcesz wykonać ? ").lower()
+
         if user_operation == "dz":
            div(first_number, second_number)
         elif user_operation == "m":
