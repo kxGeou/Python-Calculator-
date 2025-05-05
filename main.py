@@ -19,6 +19,21 @@ def get_user_data():
             print("Podana wartość musi być liczbą")
     return first_number , second_number
 
+def add(a,b):
+    addition = a + b
+    print(f"{a} + {b} = {addition}")
+
+def div(a,b):
+    if b == 0:
+        print("Nie można dzielić przez zero!")
+    else:
+        divide = a / b
+        print(f"{a} / {b} = {divide}")
+def multi(a,b):
+    multiply = a * b
+    print(f"{a} * {b} = {multiply}")
+
+
 def operation_system():
     end_program = False
     while not end_program:
@@ -28,20 +43,11 @@ def operation_system():
         show_menu()
         user_operation = input("Jaką operacje chcesz wykonać ? ").lower()
         if user_operation == "dz":
-            if second_number == 0:
-                print("Nie można dzielić przez zero!")
-            else:
-                divide = first_number / second_number
-                print(f"{first_number} / {second_number} = {divide}")
-
+           div(first_number, second_number)
         elif user_operation == "m":
-            multiply = first_number * second_number
-            print(f"{first_number} * {second_number} = {multiply}")
-
+            multi(first_number,second_number)
         elif user_operation == "d":
-            addition = first_number + second_number
-            print(f"{first_number} + {second_number} = {addition}")
-
+            add(first_number, second_number)
         elif user_operation == "o":
             subtraction = first_number - second_number
             print(f"{first_number} - {second_number} = {subtraction}")
