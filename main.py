@@ -13,8 +13,8 @@ def get_user_data():
     good_value = False
     while not good_value:
         try:
-            first_number = int(input("Podaj pierwszą liczbe: "))
-            second_number = int(input("Podaj drugą liczbe: "))
+            first_number = float(input("Podaj pierwszą liczbe: "))
+            second_number = float(input("Podaj drugą liczbe: "))
             print(f"Podałeś {first_number} i {second_number}")
             good_value = True
         except ValueError:
@@ -23,9 +23,9 @@ def get_user_data():
 
 def add(a,b):
     addition = a + b
-    operation_history.append(f"{a} + {b} = {addition}")
-    print(f"{a} + {b} = {addition}")
-
+    result = f"{a} + {b} = {addition}"
+    operation_history.append(result)
+    print(result)
 def div(a,b):
     if b == 0:
         print("Nie można dzielić przez zero!")
@@ -36,14 +36,20 @@ def div(a,b):
         print(result)
 def multi(a,b):
     multiply = a * b
-    operation_history.append(f"{a} * {b} = {multiply}")
-    print(f"{a} * {b} = {multiply}")
-
+    result = f"{a} * {b} = {multiply}"
+    operation_history.append(result)
+    print(result)
 def subs(a,b):
     subtraction = a - b
-    operation_history.append(f"{a} - {b} = {subtraction}")
-    print(f"{a} - {b} = {subtraction}")
+    result = f"{a} - {b} = {subtraction}"
+    operation_history.append(result)
+    print(result)
 
+
+def save_file(a):
+    file_path = "C:/Users/Oliwia/Desktop/operationHistory.txt"
+    with open(file_path, "w") as file:
+        file.write(a)
 def operation_system():
     end_program = False
     while not end_program:
@@ -70,6 +76,8 @@ def operation_system():
                 print("Historia obliczeń: ")
                 for operation in operation_history:
                     print(operation)
+                res = '\n'.join(operation_history)
+                save_file(res)
                 end_program = True
         except ValueError:
             print("Nieprawidłowa odpowiedź, kończę program.")
