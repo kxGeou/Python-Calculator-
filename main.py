@@ -1,3 +1,5 @@
+
+operation_history = []
 def show_menu():
     print("""
 Dostępne operacje: 
@@ -21,6 +23,7 @@ def get_user_data():
 
 def add(a,b):
     addition = a + b
+    operation_history.append(f"{a} + {b} = {addition}")
     print(f"{a} + {b} = {addition}")
 
 def div(a,b):
@@ -28,11 +31,18 @@ def div(a,b):
         print("Nie można dzielić przez zero!")
     else:
         divide = a / b
-        print(f"{a} / {b} = {divide}")
+        result = f"{a} / {b} = {divide}"
+        operation_history.append(result)
+        print(result)
 def multi(a,b):
     multiply = a * b
+    operation_history.append(f"{a} * {b} = {multiply}")
     print(f"{a} * {b} = {multiply}")
 
+def subs(a,b):
+    subtraction = a - b
+    operation_history.append(f"{a} - {b} = {subtraction}")
+    print(f"{a} - {b} = {subtraction}")
 
 def operation_system():
     end_program = False
@@ -41,6 +51,7 @@ def operation_system():
         first_number = numbers[0]
         second_number = numbers[1]
         show_menu()
+
         user_operation = input("Jaką operacje chcesz wykonać ? ").lower()
         if user_operation == "dz":
            div(first_number, second_number)
@@ -49,13 +60,17 @@ def operation_system():
         elif user_operation == "d":
             add(first_number, second_number)
         elif user_operation == "o":
-            subtraction = first_number - second_number
-            print(f"{first_number} - {second_number} = {subtraction}")
+            subs(first_number, second_number)
         else:
             print("Nieznana operacja!")
 
         try:
             more_calc = int(input("Czy chcesz wykonać nowe obliczenie ? \n 1 - Tak \n 2 - Nie \n"))
+            if more_calc == 2:
+                print("Historia obliczeń: ")
+                for operation in operation_history:
+                    print(operation)
+                end_program = True
         except ValueError:
             print("Nieprawidłowa odpowiedź, kończę program.")
             end_program = True
